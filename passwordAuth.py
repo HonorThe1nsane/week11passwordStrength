@@ -5,10 +5,56 @@ password = input("Enter a password: ")
 
 
 def passwordCombinations(password):
-    passwordLength = len(password)
     passwordCombinations = 0
-    passwordCombinations = 2**passwordLength
-    return passwordCombinations
+    if any(char.isdigit() for char in password): #check for numerical characters
+        passwordCombinations += 10
+    if any(char.isupper() for char in password): #check for upper case characters
+        passwordCombinations += 26
+    if any(char.islower() for char in password): #check for lower case characters
+        passwordCombinations += 26
+    if any(
+        char
+        in [
+            "!",
+            "@",
+            "#",
+            "$",
+            "%",
+            "^",
+            "&",
+            "*",
+            "(",
+            ")",
+            "-",
+            "_",
+            "+",
+            "=",
+            "?",
+            "<",
+            ">",
+            ",",
+            ".",
+            ";",
+            ":",
+            "[",
+            "]",
+            "{",
+            "}",
+            "|",
+            "\\",
+            "/",
+            "`",
+            "~",
+        ]
+        for char in password
+    ):
+        passwordCombinations += 32
+
+    passwordLength = len(password)
+
+    passwordMaxCombos = passwordCombinations**passwordLength
+
+    return passwordMaxCombos
 
 
 print(
