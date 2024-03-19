@@ -12,7 +12,7 @@ def passwordCombinations(password):
         passwordCombinations += 26
     if any(char.islower() for char in password): #check for lower case characters
         passwordCombinations += 26
-    if any(
+    if any(                                      #check for special characters
         char
         in [
             "!",
